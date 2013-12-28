@@ -20,6 +20,7 @@ package com.google.bitcoin.core;
 import com.google.bitcoin.core.Peer.PeerHandler;
 import com.google.bitcoin.discovery.PeerDiscovery;
 import com.google.bitcoin.discovery.PeerDiscoveryException;
+import com.google.bitcoin.params.MainNetParams;
 import com.google.bitcoin.utils.ListenerRegistration;
 import com.google.bitcoin.utils.Threading;
 import com.google.common.base.Preconditions;
@@ -101,7 +102,7 @@ public class PeerGroup extends AbstractIdleService implements TransactionBroadca
     // until we reach this count.
     @GuardedBy("lock") private int maxConnections;
     // Minimum protocol version we will allow ourselves to connect to: require Bloom filtering.
-    private volatile int vMinRequiredProtocolVersion = FilteredBlock.MIN_PROTOCOL_VERSION;
+    private volatile int vMinRequiredProtocolVersion = MainNetParams.PROTOCOL_VERSION;
 
     // Runs a background thread that we use for scheduling pings to our peers, so we can measure their performance
     // and network latency. We ping peers every pingIntervalMsec milliseconds.
@@ -1329,7 +1330,7 @@ public class PeerGroup extends AbstractIdleService implements TransactionBroadca
         // zap peers if they upgrade early. If we can't find any peers that have our preferred protocol version or
         // better then we'll settle for the highest we found instead.
         int highestVersion = 0, preferredVersion = 0;
-        final int PREFERRED_VERSION = FilteredBlock.MIN_PROTOCOL_VERSION;
+        final int PREFERRED_VERSION = MainNetParams.PROTOCOL_VERSION;
         for (Peer peer : candidates) {
             highestVersion = Math.max(peer.getPeerVersionMessage().clientVersion, highestVersion);
             preferredVersion = Math.min(highestVersion, PREFERRED_VERSION);
