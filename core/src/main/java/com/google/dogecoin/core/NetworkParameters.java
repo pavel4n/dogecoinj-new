@@ -48,10 +48,10 @@ public abstract class NetworkParameters implements Serializable {
     /**
      * The alert signing key originally owned by Satoshi, and now passed on to Gavin along with a few others.
      */
-    public static final byte[] SATOSHI_KEY = Hex.decode("04d4da7a5dae4db797d9b0644d57a5cd50e05a70f36091cd62e2fc41c98ded06340be5a43a35e185690cd9cde5d72da8f6d065b499b06f51dcfba14aad859f443a");
+    public static final byte[] SATOSHI_KEY = Hex.decode("04af4780c94216611b0ad88acf18a88a2ed97220a228f22e3af6f02973125d576f874c81d3088988a4fd38820cc807eee415e6abf74d5b5d59c79fcf59e4965830");
 
     /** The string returned by getId() for the main, production network where people trade things. */
-    public static final String ID_MAINNET = "org.dogecoin.production";
+    public static final String ID_MAINNET = "org.isracoin.production";
     /** The string returned by getId() for the testnet. */
     public static final String ID_TESTNET = "org.dogecoin.test";
     /** Unit test network. */
@@ -105,15 +105,15 @@ public abstract class NetworkParameters implements Serializable {
         try {
             // A script containing the difficulty bits and the following message:
             //
-            //   "The Times 03/Jan/2009 Chancellor on brink of second bailout for banks"
+            //   "Mar-17-2014 Harvard Scientists: First Direct Evidence of Cosmic Inflation"
             byte[] bytes = Hex.decode
-                    ("04ffff001d0104084e696e746f6e646f");
+                    ("04ffff001d0104494d61722d31372d32303134204861727661726420536369656e74697374733a204669727374204469726563742045766964656e6365206f6620436f736d696320496e666c6174696f6e");
             t.addInput(new TransactionInput(n, t, bytes));
             ByteArrayOutputStream scriptPubKeyBytes = new ByteArrayOutputStream();
             Script.writeBytes(scriptPubKeyBytes, Hex.decode
-                    ("040184710fa689ad5023690c80f3a49c8f13f8d45b8c857fbcbc8bc4a8e4d3eb4b10f4d4604fa08dce601aaf0f470216fe1b51850b4acf21b179c45070ac7b03a9"));
+                    ("04c6c6a01450f2b8bbb176b98f593623b04a5f5761a7d0adae4d21f77c366e01e147217a9d8864a871d95d182e01d2b003168f0fa7851278a86ac0aa682919f9a6"));
             scriptPubKeyBytes.write(ScriptOpCodes.OP_CHECKSIG);
-            t.addOutput(new TransactionOutput(n, t, Utils.toNanoCoins(88, 0), scriptPubKeyBytes.toByteArray()));
+            t.addOutput(new TransactionOutput(n, t, Utils.toNanoCoins(1, 0), scriptPubKeyBytes.toByteArray()));
         } catch (Exception e) {
             // Cannot happen.
             throw new RuntimeException(e);
@@ -138,7 +138,7 @@ public abstract class NetworkParameters implements Serializable {
     /**
      * The maximum money to be generated
      */
-    public static final BigInteger MAX_MONEY = new BigInteger("100000000000", 10).multiply(COIN);
+    public static final BigInteger MAX_MONEY = new BigInteger("4800000000", 10).multiply(COIN);
 
     /** Alias for TestNet3Params.get(), use that instead. */
     @Deprecated
