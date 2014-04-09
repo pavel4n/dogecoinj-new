@@ -32,23 +32,23 @@ public class MainNetParams extends NetworkParameters {
         targetTimespan = TARGET_TIMESPAN;
         newTargetTimespan = TARGET_TIMESPAN_NEW;
         proofOfWorkLimit = Utils.decodeCompactBits(0x1e0fffffL);
-        dumpedPrivateKeyHeader = 158; //This is always addressHeader + 128
-        addressHeader = 30;
+        dumpedPrivateKeyHeader = 230; //This is always addressHeader + 128
+        addressHeader = 102;
         p2shHeader = 22;
         acceptableAddressCodes = new int[] { addressHeader, p2shHeader };
-        port = 22556;
-        packetMagic = 0xc0c0c0c0;
+        port = 21948;
+        packetMagic = 0xcfbdbe9c;
         genesisBlock.setDifficultyTarget(0x1e0ffff0L);
-        genesisBlock.setTime(1386325540L);
-        genesisBlock.setNonce(99943L);
+        genesisBlock.setTime(1395078549L);
+        genesisBlock.setNonce(86250L);
         id = ID_MAINNET;
         subsidyDecreaseBlockCount = 100000;
         spendableCoinbaseDepth = 100;
 
-        diffChangeTarget = 145000;
+        diffChangeTarget = 145;
 
         String genesisHash = genesisBlock.getHashAsString();
-        checkState(genesisHash.equals("1a91e3dace36e2be3bf030a65679fe821aa1d6ef92e7c9902eb318182c355691"),
+        checkState(genesisHash.equals("8432ed563657dc92d085fa98b5dfd77975ff50b6bc4be28efe80db615d98a9ae"),
                 genesisHash);
 
         // This contains (at a minimum) the blocks which are not BIP30 compliant. BIP30 changed how duplicate
@@ -63,10 +63,7 @@ public class MainNetParams extends NetworkParameters {
         //TODO Get actual Dogecoin checkpoints
 
         dnsSeeds = new String[] {
-                "seed.dogecoin.com",
-                "seed.mophides.com",
-                "seed.dglibrary.org",
-                "seed.dogechain.info",
+                "dnsseed.israelcoin.org",
         };
     }
 
